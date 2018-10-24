@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单幅文字型</title>
+    {{include 'tosonGW/public/header.html'}}
+</head>
+<body class="vertical stripes">
+{{include 'tosonGW/public/nav_top.html'}}
+<hr/>
+<hr/>
+    <div style="margin-left: 20%;margin-top: 5%;width: 73%">
+        <h3><%=content.content[0].title%></h3>
+        <p style="margin-top: 3%" id="text"></p>
+        <input type="hidden" id="hidden" value="<%=content.content[0].text%>"/>
+    </div>
+
+{{include 'tosonGW/public/nav_bottom.html'}}
+</body>
+{{include 'tosonGW/public/footer.html'}}
+<script>
+    $(function () {
+        $("#text").html($("#hidden").val());
+    })
+</script>
+</html>

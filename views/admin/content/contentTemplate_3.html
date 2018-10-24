@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>单幅文字型</title>
+</head>
+{{include "admin/public/header.html"}}
+<body>
+{{include "admin/public/nav_top.html"}}		<!--  顶部导航  -->
+<!-- 本页面特有外部样式styles引入 -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        {{include "admin/public/nav_left.html"}}	<!--  左侧导航  -->
+
+
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="{{__HOST__}}/admin">首页</a>
+                    </li>
+                    <li ><a href="{{__ROOT__}}/admin/content">内容管理</a></li>
+                    <li class="active">内容编辑</li>
+                </ul><!-- .breadcrumb -->
+
+                <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                            <i class="icon-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div><!-- #nav-search -->
+            </div>
+
+            <div class="page-content">
+
+                <div class="page-header">
+                    <h1>
+                        内容编辑<input type="hidden" id="sessionAccount"">
+                    </h1>
+                </div><!-- /.page-header -->
+
+                <form class="form-horizontal" role="form" method="post" action="{{__HOST__}}/admin/content/contentTemplate_3/doEdit">
+                    <input type="hidden" value="<%=naviName%>" name="naviName"/>
+                    <input type="hidden" value="<%=naviRoot%>" name="naviRoot"/>
+                    <input type="hidden" value="<%=contentPageType%>" name="contentPageType"/>
+                    <%if(content.length > 0){%>
+                        <input type="hidden" value="<%=content[0].title%>" name="oldTitle"/>
+                        <input type="hidden" value="<%=content[0].text%>" name="oldText"/>
+                    <%}else{%>
+                        <input type="hidden" name="oldTitle"/>
+                        <input type="hidden" name="oldText"/>
+                    <%}%>
+                    <div>
+                        <label style="font-weight: bold;font-size: 16px;padding-top: 2px" class="col-sm-3 control-label no-padding-right" for="form-field-1">标题</label>
+
+                        <div class="col-sm-9">
+                            <%if(content.length > 0){%>
+                                <input type="text" name="title" id="form-field-1" value="<%=content[0].title%>"  class="col-xs-10 col-sm-5" />
+                            <%}else{%>
+                                <input type="text" name="title" id="form-field-1"   class="col-xs-10 col-sm-5" />
+                            <%}%>
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+
+                    <div style="margin-left: 8%" class="col-xs-10">
+                        <div  class="widget-box">
+                            <div class="widget-header widget-header-small  header-color-green">
+                                <div class="widget-toolbar">
+                                    <a href="#" data-action="collapse">
+                                        <i class="icon-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main no-padding">
+                                    <div class="wysiwyg-editor" id="editor2" ></div>
+                                    <%if(content.length > 0){%>
+                                        <input type="hidden" id="editorInput" name="text"  value="<%=content[0].text%>"/>
+                                    <%}else{%>
+                                        <input type="hidden" id="editorInput" name="text"  />
+                                    <%}%>
+
+                                </div>
+
+                                <div class="widget-toolbox padding-4 clearfix">
+                                    <div class="btn-group pull-left">
+                                        <button type="button" onclick="cancel()" class="btn btn-sm btn-grey">
+                                            <i class="icon-remove bigger-125"></i>
+                                            Cancel
+                                        </button>
+                                    </div>
+
+                                    <div class="btn-group pull-right">
+                                        <!--<button onclick="save()" class="btn btn-sm btn-danger">
+                                            <i class="icon-save bigger-125"></i>
+                                            Save
+                                        </button>-->
+                                        <input type="button" class="btn btn-sm btn-danger" onclick="save()" value="save"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+            </div>
+        </div><!-- /.main-content -->
+
+    </div><!-- /.main-container-inner -->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+        <!--  通用script引入  -->
+        {{include "admin/public/footer.html"}}
+        <!-- 本页面特有外部script引入-->
+        <script src="{{__HOST__}}/admin/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="{{__HOST__}}/admin/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="{{__HOST__}}/admin/js/markdown/markdown.min.js"></script>
+        <script src="{{__HOST__}}/admin/js/markdown/bootstrap-markdown.min.js"></script>
+        <script src="{{__HOST__}}/admin/js/jquery.hotkeys.min.js"></script>
+        <script src="{{__HOST__}}/admin/js/bootstrap-wysiwyg.min.js"></script>
+        <script src="{{__HOST__}}/admin/js/bootbox.min.js"></script>
+        <script src="{{__HOST__}}/admin/js/specialPage/contentTemplate_3.js"></script>
+        <script src="{{__HOST__}}/common/js/util.js"></script>
+    </body>
+</html>

@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+{{include "admin/public/header.html"}}
+	<style>
+		.form-horizontal .form-group{
+			height: 44px;
+		}
+	</style>
+	<body>
+			{{include "admin/public/nav_top.html"}}			<!--  顶部导航  -->
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+
+				{{include "admin/public/nav_left.html"}}	<!--  左侧导航  -->
+
+				<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="{{__HOST__}}/admin">首页</a>
+							</li>
+							<li class="active">增加管理员</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- #nav-search -->
+					</div>
+
+
+
+
+					<div class="page-content">
+
+						<div class="page-header">
+							<h1>
+								信息录入
+							</h1>
+						</div><!-- /.page-header -->
+
+						<form class="form-horizontal" method="post" id="form1" action="{{__HOST__}}/admin/user/doAdd">
+								<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" for="form-field-1">账号:</label>
+									<div class="col-sm-10">
+										<%if(data){%>
+											<input type="text" name="account" role="forForm1" value="<%=data.account%>" id="form-field-1" class="col-xs-10 col-sm-5">
+										<%}else{%>
+											<input type="text" name="account" role="forForm1" id="form-field-1" class="col-xs-10 col-sm-5">
+										<%}%>
+											<span name="sign" class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"><%=errMsg%></span>
+											</span>
+
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" for="form-field-4">密码:</label>
+									<div class="col-sm-10">
+										<%if(data){%>
+											<input type="password" name="password" role="forForm1" value="<%=data.password%>" id="form-field-4"  class="col-xs-10 col-sm-5">
+										<%}else{%>
+											<input type="password" name="password" role="forForm1"  id="form-field-4"  class="col-xs-10 col-sm-5">
+										<%}%>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" for="form-field-5">重复密码:</label>
+									<div class="col-sm-10">
+										<%if(data){%>
+											<input type="password" name="password2" role="forForm1" value="<%=data.password%>" id="form-field-5"  class="col-xs-10 col-sm-5">
+										<%}else{%>
+											<input type="password" name="password2" role="forForm1"  id="form-field-5"  class="col-xs-10 col-sm-5">
+										<%}%>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" for="form-field-2">用户姓名:</label>
+									<div class="col-sm-10">
+										<%if(data){%>
+											<input type="text" name="useName" role="forForm1" value="<%=data.useName%>" id="form-field-2"  class="col-xs-10 col-sm-5">
+										<%}else{%>
+											<input type="text" name="useName" role="forForm1"  id="form-field-2"  class="col-xs-10 col-sm-5">
+										<%}%>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" >性别:</label>
+									<div class="col-sm-10">
+										<select name="sex" id="cate_id" style="width:200px;" role="forForm1">
+											<option value="不明">--请选择分类--</option>
+											<option value="女">女</option>
+											<option value="男">男</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label no-padding-right" for="form-field-3">年龄:</label>
+									<div class="col-sm-10">
+										<%if(data){%>
+											<input type="text" name="age" role="forForm1" value="<%=data.age%>" id="form-field-3"  class="col-xs-10 col-sm-5">
+										<%}else{%>
+											<input type="text" name="age" role="forForm1"  id="form-field-3"  class="col-xs-10 col-sm-5">
+										<%}%>
+									</div>
+								</div>
+							<div class="clearfix form-actions">
+								<div class="col-md-offset-3 col-md-9">
+									<button class="btn btn-info" id="submitBtn" type="button" >
+										<i class="icon-ok bigger-110"></i>
+										Submit
+									</button>
+
+									&nbsp; &nbsp; &nbsp;
+									<button class="btn" id="resetBtn" type="reset">
+										<i class="icon-undo bigger-110"></i>
+										Reset
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div><!-- /.main-content -->
+			
+			</div><!-- /.main-container-inner -->
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+
+		{{include "admin/public/footer.html"}}
+
+
+		<script type="text/javascript">
+
+
+
+			$(function(){
+			    //target:提交按钮
+				$("#submitBtn").on("click",function () {
+                    var list =  $("#form-field-1,#form-field-4,#form-field-5");
+                    for(var i=0;i<list.length;i++){
+                        if(list.eq(i).val() == "" || list.eq(i).val() == undefined){
+                            return alert("填完整");
+                        }
+                    }
+                    if($("#form-field-4").val() != $("#form-field-5").val()){
+                        return alert("密码不一致");
+                    }
+				    $("#form1").submit();
+                })
+				//target:重置按钮
+                $("#resetBtn").on("click",function () {
+                    var list = $("input[role='forForm1']");
+                    for(var i=0;i<list.length;i++){
+                        list.eq(i).val("");
+					}
+                })
+				//target:重新填写取消标识
+				$("#form-field-1").on("keyup",function () {
+					$(this).nextAll("span[name='sign']:first").find(">span:first").text("");
+                })
+
+			})
+			
+
+		</script>
+	
+</body>
+</html>
+

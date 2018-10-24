@@ -1,0 +1,52 @@
+/*target:特用于每个内容子项目外框*/
+.DIV1{
+    border:2px dashed silver;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.DIV1 > img{
+    float: left;
+    border: solid 1px lightgrey;
+    width: 20%;
+    height: 250px;
+}
+.DIV1 > textarea{
+    width: 50%;
+    height:250px;
+    background: lightgoldenrodyellow;
+}
+.textArea{
+    float: left;
+    display: inline-block;
+    width: 50%;
+    height:250px;
+    background: lightgoldenrodyellow;
+}
+/*target:第一种通用UL*/
+.UL1{
+    float: left;
+    display: inline-block;
+    width: 20%;
+    margin-top: 8%;
+}
+.UL1 li{
+    font-size: 16px;
+    font-weight: bold;
+}
+.UL1 li>span{
+    font-size: 12px;
+    font-weight: inherit;
+    font-style: italic;
+    border: solid 0px silver;
+}
+/*target:第二种通用UL*/
+.UL2{
+    float: left;
+    margin-top: 6%;
+    display: inline-block;
+    list-style: none;
+    margin-left: 5px
+}
+.UL2 li{
+    margin-bottom: 5px;
+}

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand brand_image" href="#">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <input class="" type="image" src="/tosonGW/images/index_icon.ico"/>-->
+            </a>
+            <p class="navbar-text" role="brand">TOSON</p>
+        </div>
+
+        <div id="navArea">
+            <ul class="nav navbar-nav nav-pills">
+                <li>
+                    <a href="{{__HOST__}}/">首页</a>
+                </li>
+                <%for(var i =0;i<data.length;i++){ %>
+                <%if(data[i].children !=null && data[i].children.length >0){ %>
+                <li class="dropdown">
+                    <a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+                        <%=data[i].naviName%>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu ">
+                        <%for(var j =0;j<data[i].children.length;j++){ %>
+                        <%if(data[i].children[j].using){%>
+                        <li><a href="{{__HOST__}}/doTemplate?naviName=<%=data[i].children[j].naviName%>&fatherNode=<%=data[i].naviName%>&contentPageType=<%=data[i].children[j].contentPageType%>">
+                            <%=data[i].children[j].naviName%>
+                        </a>
+                        </li>
+                        <%}%>
+                        <%}%>
+                    </ul>
+                </li>
+                <%}else{%>
+                <li>
+                    <a href="{{__HOST__}}/doTemplate?naviName=<%=data[i].naviName%>&fatherNode=<%=data[i].fatherNode%>&contentPageType=<%=data[i].contentPageType%>"><%=data[i].naviName%></a>
+                </li>
+                <%}%>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>格子图文型</title>
+    {{include 'tosonGW/public/header.html'}}
+    <link href="/tosonGW/CSS/style.css" rel="stylesheet" type="text/css">
+    <!--<link href="/tosonGW/CSS/reset.css" rel="stylesheet" type="text/css">-->
+</head>
+<body class="vertical stripes">
+{{include 'tosonGW/public/nav_top.html'}}
+<hr/>
+<div class="container nopadding">
+    <div class="container" style="padding-bottom: 10px">
+        <h1><%=content.content2.title%></h1>
+        <p><%-content.content2.text%></p>
+    </div>
+
+        <div  class="gridWrapper clearfix">
+            <%for(var i=0;i<content.content.length;i++){%>
+                <div style="background-image: url('<%=content.content[i].imgPath%>');background-repeat: no-repeat;background-size: cover" class="gridBlock" >
+                    <div class="captionWrapper">
+                        <div class="caption">
+                            <div class="heading"><%=content.content[i].title%></div>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <div class="title"><%=content.content[i].title%></div>
+                        <%-content.content[i].text%>
+                    </div>
+                </div>
+            <%}%>
+        </div>
+</div>
+
+
+{{include 'tosonGW/public/nav_bottom.html'}}
+
+</body>
+{{include 'tosonGW/public/footer.html'}}
+<script src="/tosonGW/js/common.js"></script>       <!--盗用阿里巴巴前端资源-->
+
+</html>

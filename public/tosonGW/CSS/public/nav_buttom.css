@@ -1,0 +1,38 @@
+/*target:底部导航区*/
+#nav_buttom{
+    height: 400px;
+    background: #363636;
+    background-image: url("../../images/index_icon.ico");
+    background-repeat: no-repeat;
+    background-position: 20% 15%;
+}
+.list1{
+    display: inline-block;
+    position: relative;
+    top: 100px;
+    margin-left: 10px;
+    width: 140px;
+    overflow-x
+}
+.list1:first-child{
+    margin-left: 500px;
+}
+/*底部导航区--导航内容区*/
+#navArea_bottom{
+    position: relative;
+    top:15%;
+    left: 25%;
+    padding-left: 5%;
+    color: white;
+}
+/*target:底部导航区--导航内容区的UL*/
+#navArea_bottom ul{
+    display: inline-block;
+    margin-right: 5%;
+}
+#permission{
+    width: 100%;
+    background: #363636;
+    text-align: center;
+    color: silver;
+}

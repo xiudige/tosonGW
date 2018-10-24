@@ -1,0 +1,47 @@
+/*target:顶部导航区*/
+#nav_top{
+    background-color: black;
+    color: white;
+    height: 60px;
+    padding: 1%;
+    padding-left: 2%;
+    /*overflow: hidden;*/
+}
+nav[role="navigation"]{
+    background-color: white;
+    border-bottom: 0px;
+    box-shadow: 1px 1px 2px 3px 	#BEBEBE;
+}
+
+#navArea a:hover{
+    color: orange;
+}
+/*target:顶部企业图标*/
+.brand_image{
+    background-image:url("../../images/logo.png") ;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+p[role="brand"]{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    border-left:3px solid grey;
+    font-size:20px;
+    font-family: "Arial Black";
+    font:bold;
+    padding-left: 10px;
+}
+/*target:企业名*/
+#corName{
+    position: absolute;
+    margin-left: 8%;
+    margin-top: 0.5%;
+}
+/*target:导航区*/
+#navArea{
+    position: fixed;
+    /*top: 0.5%;*/
+    margin-left: 50%;
+    z-index: 12;
+}

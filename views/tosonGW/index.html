@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {{include 'tosonGW/public/header.html'}}
+    <link rel="stylesheet" href="/tosonGW/CSS/index.css"/>
+</head>
+<body>
+    {{include 'tosonGW/public/nav_top.html'}}
+
+    <div  id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            <li is="lunboImage-target" v-for="item in lunboImagesList" v-bind:todo="item"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div id="lunboImages" class="carousel-inner">
+            <div class="item active">
+                <img src="/tosonGW/images/GY3.jpg" alt="First slide">
+            </div>
+            <div is="lunboImage-item" v-for="item in lunboImagesList" v-bind:todo="item"></div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <i class="fa fa-arrow-circle-left fa-2x"></i>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <i class="fa fa-arrow-circle-right fa-2x"></i>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    {{include 'tosonGW/public/nav_bottom.html'}}
+    {{include 'tosonGW/public/footer.html'}}
+    <!-- 本页面特有外部script引入-->
+    <script src="{{__HOST__}}/common/js/vue.min.js"></script>
+    <script src="{{__HOST__}}/tosonGW/js/specialPage/index.js"></script>
+</body>
+</html>

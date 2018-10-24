@@ -1,0 +1,13 @@
+/*target:轮播图列表展示*/
+.list_lunboImage{
+    width: 150px;
+    height: 150px;
+}
+.previewImage{
+    background: #FFE4C4;
+}
+/*
+#imageAdd .list_lunboImage{
+    padding-left: 30%;
+    padding-top: 25%;
+}*/

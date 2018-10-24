@@ -1,0 +1,12 @@
+.carousel-inner{
+    height: 650px;
+}
+/*.carousel-inner > .item{
+    height: 100%;
+    overflow: hidden;
+}*/
+
+/*target:轮播图的左右箭头*/
+#myCarousel i{
+    margin-top:120%;
+}

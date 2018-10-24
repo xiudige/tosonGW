@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>四块图文型</title>
+    {{include 'tosonGW/public/header.html'}}
+</head>
+<style>
+    .loading2{
+        position:relative;
+        left: -20%;
+        top: 40%;
+    }
+    .loading{
+        filter: blur(2px);
+        animation:myfirst 5s;
+        animation-iteration-count:infinite;
+        animation-direction:alternate;
+    }
+    @keyframes myfirst
+    {
+        0%   {filter:blur(2px);background:rgba(12,233,125,0.2)}
+        25%  {filter:blur(4px);background:rgba(0 229 238,0.3)}
+        50%  {filter:blur(8px);background:rgba(	0 ,197 ,205,0.4)}
+        75%  {filter:blur(4px);background:rgba(0 ,197 ,205,0.3)}
+        100% {filter:blur(2px);background:rgba(12,233,125,0.2)}
+    }
+
+</style>
+<body class="vertical stripes">
+{{include 'tosonGW/public/nav_top.html'}}
+<hr/>
+<hr/>
+<input type="hidden" id="mobanData" value="<%=content%>">
+<%for(var i=0;i<content.content.length;i++){%>
+<h1 style="width: 60%;margin-left: 20%;background: 	#FFE4B5;border-radius: 5px;font-family: 华文中宋;font-weight: bold">·<%=content.content[i].mainTitle%></h1>
+
+<div style="width: 60%;height: 300px; margin-left: 20%;margin-bottom: 5%; ">
+    <i class="fa  fa-spinner text-danger fa-spin fa-4x  loading2" aria-hidden="true"></i>
+    <img style="width: 300px;height: 300px;float: left;width: 35%" name="image" src="">
+    <div style="display: inline-block;text-align: center;float: left;padding-left: 10px;width: 65%;height: 100%">
+        <h4 style="margin-top: 5px;font-weight: bold"><%=content.content[i].sonTitle%></h4>
+        <div style="font-family: 幼圆;height:88%; overflow: auto"><%-content.content[i].text%></div>
+    </div>
+</div>
+<%}%>
+
+{{include 'tosonGW/public/nav_bottom.html'}}
+
+</body>
+{{include 'tosonGW/public/footer.html'}}
+
+<script>
+    $(function (){
+        var mobanData = $("#mobanData").val();
+        mobanData = JSON.parse(mobanData);
+        var images = $("img[name='image']");
+        for(let i=0;i<images.length;i++){
+            let loadingImgPath = mobanData.content[i].imgPath;      //真正需要加载的图片路径
+            let imgObj = new Image();
+            imgObj.src = loadingImgPath;
+            imgObj.onload = function () {
+                images.eq(i).attr("src",loadingImgPath);
+                images.eq(i).prev().remove();
+            }
+        }
+    })
+</script>
+</html>
